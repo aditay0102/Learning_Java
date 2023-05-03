@@ -5,8 +5,12 @@ public class find_frequency {
 
         for(int i = 0;i<arr.length;i++){
             int count = 0;
+            int start = 0;
+            int end = 0;
             for(int j =i+1;j<arr.length;j++){
                 if(arr[i]== arr[j]) {
+                    start = i;
+                    end = j;
                     count++;
                 }
             }
@@ -16,5 +20,7 @@ public class find_frequency {
         for(int i =0;i<fre.length;i++){
             System.out.print(fre[i]+" ");
         }
+
+        System.out.print(start)
     }
 }
