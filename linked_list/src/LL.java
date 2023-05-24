@@ -58,12 +58,70 @@ public class LL {
        }
     }
 
+    // ------------------                       FOR DELETION  ------------------------   -------- ---
+    public int deleteFirst(){
+        int val = head.value;
+        head = head.next;
+        if(head == null){
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public void deleteindex(int index){
+        if(index == 0){
+            deleteFirst();
+            return;
+        }
+        if(index == size-1){
+            deleteLast();
+            return;
+        }
+
+        Node prev = get(index-1);
+        prev.next = prev.next.next;
+        size--;
+    }
+
+
+    public void deleteLast(){
+        if(size<= 1){
+            deleteFirst();
+        }
+       Node  node  = get(size-2);
+        /*   can also be used
+        for(int i=0;i<size-1;i++){
+            node = node.next;
+        }
+        /*
+         */
+        int val = tail.value;
+        tail = node;
+        tail.next = null;
+
+
+    }
+
+    public Node get(int index){
+        Node node = head;
+        for(int i=0;i<index;i++){
+            node  = node.next;
+        }
+        return node;
+    }
+
+
+
+
+//---------------   ----------------================  Display =============== ---------------
     public void display(){
         Node temp = head;
         while(temp != null){
             System.out.print(temp.value + " -> ");
             temp = temp.next;
         }
+        System.out.print("END");
     }
 
     private class Node{
@@ -80,5 +138,7 @@ public class LL {
             this.value = value;
             this.next = next;
         }
+
+
     }
 }
